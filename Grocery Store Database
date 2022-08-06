@@ -1,0 +1,25 @@
+CREATE TABLE grocery_store (id INTEGER PRIMARY KEY, name TEXT, cost INTEGER, popularity INTEGER, quantity INTEGER);
+INSERT INTO grocery_store VALUES (1, "bananas", .25, 4, 55);
+INSERT INTO grocery_store VALUES (2, "grapes", .56, 5, 100);
+INSERT INTO grocery_store VALUES (3, "potatoes", 1.43, 3, 34);
+INSERT INTO grocery_store VALUES (4, "lettuce", 2.33, 3, 20);
+INSERT INTO grocery_store VALUES (5, "strawberries", 3.33, 5, 15);
+INSERT INTO grocery_store VALUES (6, "avocados", 2.00, 5, 10);
+INSERT INTO grocery_store VALUES (7, "blueberries", 3.50, 4, 12);
+INSERT INTO grocery_store VALUES (8, "oranges", .20, 4, 14);
+INSERT INTO grocery_store VALUES (9, "carrots", .33, 2, 11);
+INSERT INTO grocery_store VALUES (10, "spinach", .75, 1, 10);
+INSERT INTO grocery_store VALUES (11, "broccoli", 1.34, 3, 24);
+INSERT INTO grocery_store VALUES (12, "cauliflower", 1.56, 2, 3);
+INSERT INTO grocery_store VALUES (13, "raspberries", 3.05, 3, 11);
+INSERT INTO grocery_store VALUES (14, "mango", 2.33, 4, 6);
+INSERT INTO grocery_store VALUES (15, "cuccumber", .33, 3, 15);
+
+--display of full database
+SELECT * FROM grocery_store;
+
+--display of database ordered by cost
+SELECT * FROM grocery_store ORDER BY cost;
+
+--display of database total number of items
+SELECT SUM(quantity) FROM grocery_store;
