@@ -1,0 +1,78 @@
+--Created 3 tables. movie stars including name, age, movie title. married stars including name, spouse, years married. costars including name, costar,
+movie they starred in.
+
+/* Create table about the people and what they do here */
+CREATE table movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, movies TEXT);
+
+INSERT INTO movie_stars(name, age, movies) VALUES ("Brad Pitt", 58, "fight club");
+INSERT INTO movie_stars(name, age, movies) VALUES ("Jennifer Aniston", 53, "Just go with it");
+INSERT INTO movie_stars(name, age, movies) VALUES ("Bradley Cooper", 47, "The Hangover");
+INSERT INTO movie_stars(name, age, movies) VALUES ("Jennifer Lawrence", 31, "The Hunger Games");
+INSERT INTO movie_stars(name, age, movies) VALUES ("Angelina Jolie", 47, "Mr. and Mrs. Smith");
+
+CREATE table married_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, spouse TEXT, years_married INTEGER);
+
+
+INSERT INTO married_stars(name, spouse, years_married) VALUES ("Brad Pitt", "Jennifer Aniston", 5);
+INSERT INTO married_stars(name, spouse, years_married) VALUES ("Brad Pitt", "Angelina Jolie", 2);
+
+CREATE table co_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, co_star TEXT, movie TEXT);
+
+INSERT INTO co_stars(name, co_star, movie) VALUES ("Brad Pitt", "Angelina Jolie", "Mr. and Mrs. Smith");
+INSERT INTO co_stars(name, co_star, movie) VALUES ("Bradley Cooper", "Jennifer Lawrence", "Silver linings playlist");
+INSERT INTO co_stars(name, co_star, movie) VALUES ("Bradley Cooper", "Jennifer Aniston", "He's just not that into you");
+
+--displayed movie stars name, married stars spouse, married stars years_married from movie_stars table. 
+--joined married stars and movie stars table where movie stars name equals married stars name.
+SELECT movie_stars.name, married_stars.spouse, married_stars.years_married
+    FROM movie_stars
+    LEFT OUTER JOIN married_stars
+    WHERE movie_stars.name = married_stars.name;
+    
+--displayed name, co_star, movie from co_stars table where co_star is Bradley Cooper.
+SELECT co_stars.name, co_stars.co_star, co_stars.movie
+    FROM co_stars
+    WHERE co_stars.name = "Bradley Cooper";
+
+--displayed name, costar, movie from costars table aliased as c.
+--joined married stars table aliased as m. where married star equals costars name.
+SELECT c.name, c.co_star, c.movie 
+    FROM co_stars AS c
+    JOIN married_stars AS m
+    WHERE m.name = c.name;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+
+  
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
