@@ -1,0 +1,30 @@
+#In this SQL, I am querying Spotifydata to get information about artist, tracks, popularity, loudness, danceability.
+
+#1 Which artists, track have a popularity >= 75 ordered by most popular?
+SELECT artist_name, track_name, popularity
+FROM Spotifydata
+WHERE popularity >= 75
+ORDER BY popularity desc;
+
+#2 What is Olivia Rodrigo's popularity?
+SELECT artist_name, track_name, popularity
+FROM Spotifydata
+WHERE artist_name = 'Olivia Rodrigo'
+GROUP BY popularity
+ORDER BY popularity DESC;
+
+#3 What is the data in the table?
+SELECT * FROM Spotifydata;
+
+#4 Which artists popularity is 92, ordered by danceability?
+SELECT artist_name, track_name, popularity, danceability, loudness
+FROM Spotifydata
+WHERE popularity = 92
+GROUP BY artist_name
+ORDER BY danceability desc;
+
+#5 What is the average popularity and average danceability?
+SELECT artist_name, track_name, AVG(popularity), AVG(danceability)
+FROM Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(danceability);
