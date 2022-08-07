@@ -41,3 +41,9 @@ FROM Bit_DB.febsales AS feb
 LEFT JOIN BIT_DB.customers AS cust
 ON feb.orderid=cust.order_id
 WHERE feb.quantity >2;
+
+#10 How many of each product was sold in Los Angeles?
+SELECT product, SUM(quantity)
+FROM BIT_DB.Febsales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY product;
