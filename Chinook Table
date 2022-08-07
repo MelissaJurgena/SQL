@@ -1,0 +1,65 @@
+SELECT * FROM chinook.customers;
+
+SELECT CustomerID, FirstName, LastName, Country
+FROM chinook.customers
+WHERE country <> 'USA';
+
+SELECT CustomerID, FirstName, LastName, Country
+FROM chinook.customers
+WHERE country = 'Brazil';
+
+SELECT * FROM Chinook.invoices;
+
+SELECT cust.CustomerID, cust.FirstName, cust.LastName, invoice.billingcountry, invoice.invoiceID, invoice.InvoiceDate
+FROM CHINOOK.customers AS cust
+LEFT JOIN CHINOOK.invoices AS invoice
+ON cust.CustomerID = invoice.CustomerID
+WHERE invoice.billingcountry = 'Brazil'
+ORDER BY cust.CustomerID;
+
+SELECT * FROM employees;
+
+SELECT EmployeeId, FirstName, LastName, Title
+FROM chinook.employees
+WHERE title = 'Sales Support Agent';
+
+SELECT DISTINCT billingcountry
+FROM chinook.invoices;
+
+SELECT * FROM tracks;
+
+SELECT emp.LastName, emp.Firstname, inv.InvoiceId
+FROM chinook.Employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+SELECT cust.FirstName, cust.LastName, emp.FirstName, emp.LastName, cust.country, invoices.total
+FROM chinook.employees emp
+JOIN chinook.customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices ON invoices.CustomerId = cust.CustomerId;
+
+SELECT COUNT(*)
+FROM invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+SELECT COUNT(*)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+SELECT SUM(total)
+FROM invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+SELECT t.Name, i.InvoiceLineId
+FROM chinook.Invoice_items i
+JOIN chinook.Tracks t ON i.TrackId = t.TrackId;
+
+SELECT t.Name, t.Composer, i.InvoiceLineId
+FROM chinook.Invoice_items i
+JOIN chinook.Tracks t ON i.TrackId = t.TrackId;
+
+SELECT t.Name AS 'Track Name', a.Title AS 'Album Title', m.Name AS 'Media Type', g.Name AS 'Genre'
+FROM chinook.tracks t
+JOIN chinook.Albums a on a.AlbumId = t.AlbumId
+JOIN chinook.Media_Types m on m.MediaTypeId = t.MediaTypeId
+JOIN chinook.Genres g on g.GenreId = t.GenreId;
